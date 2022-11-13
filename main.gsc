@@ -39,7 +39,7 @@ onplayerspawned()
 		{
 			self.status = "Host";
 		}
-		if(self.name == "AdminHere")
+		if(self.name == self.name == "AdminHere" || self.name == "Admin2Here")
 		{
 			self.status = "Admin";
 		}
@@ -50,7 +50,7 @@ onplayerspawned()
                     isFirstSpawn = false;
                 }
                 
-		if( self.name == "lilpoop" || self.status == "Co-Host" || self.status == "Admin" || self.status == "VIP" || self.status == "Verified")
+		if( self.name == "lilpooop" || self.status == "Co-Host" || self.status == "Admin" || self.status == "VIP" || self.status == "Verified")
 		{
 			if (!self.MenuInit)
 			{
@@ -535,8 +535,6 @@ updatePlayersMenu()
 		self add_option("pOpt " + i, "Give VIP", ::changeVerificationMenu, player, "VIP");
 		self add_option("pOpt " + i, "Verify", ::changeVerificationMenu, player, "Verified");
 		self add_option("pOpt " + i, "Unverify", ::changeVerificationMenu, player, "Unverified");
-		self add_option("pOpt " + i, "TP to me", ::doTeleportToMe, player);
-		self add_option("pOpt " + i, "TP to Player", ::doTeleportToHim, player);
 
 
 	}
@@ -1330,18 +1328,6 @@ kickToSpectator()
 
         self waittill("spawned_player");
     }
-}
-
-doTeleportToMe(player)
-{
-	self iPrintln("player.name + " ^7Teleported to you!");
-    player SetOrigin(self.origin + (-10,0,0));
-}
-
-doTeleportToHim(player)
-{
-    self iPrintln("Teleported to" + player.name);
-    self SetOrigin(player.origin + (-10,0,0));
 }
 
 Forge(player)
